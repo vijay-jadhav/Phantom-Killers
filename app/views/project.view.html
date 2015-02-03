@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel-wrapper">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-4">{{proect.name}}</div>
+                        <div class="col-xs-offset-8 col-xs-2"><a ui-sref="projects.edit({projId: project.name})"><i class="glyphicon glyphicon-edit"></i> Edit</a></div>
+                        <div class="col-xs-2"><a><i class="glyphicon glyphicon-remove"></i> Delete</a></div>
+                    </div>
+                </div>
+
+                <div class="panel-stage">
+                    <div class="row">
+                        <div class="col-xs-8 col-md-6">
+                            <div class="panel-wrapper">
+                                <div class="panel-title" ng-class='{red: project.reddays > 0}'>
+                                    Red Days
+                                </div>
+                                <div class="panel-stage">
+                                    <div class="red-days">{{project.reddays}}</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-8 col-md-6">
+                            <div class="panel-wrapper">
+                                <div class="panel-title">
+                                    Billable People
+                                </div>
+                                <div class="panel-stage">
+                                    <img src="images/{{project.billable}}" class="img-responsive">
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-wrapper">
+                                <div class="panel-title" data-ng-repeat="people in project.peoples">
+                                    <span>{{people}}, </span>
+                                </div>
+                                <span>... </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-notes">
+                    Owned by {{project.owner}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel-wrapper">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-4">{{organization.name}}</div>
+                        <div class="col-xs-offset-8 col-xs-2"><a ui-sref="organization.edit({orgId: organization.name})"><i class="glyphicon glyphicon-edit"></i> Edit</a></div>
+                        <div class="col-xs-2"><a><i class="glyphicon glyphicon-remove"></i> Delete</a></div>
+                    </div>
+                </div>
+                <div class="panel-stage">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-wrapper">
+                                <div class="panel-title">
+                                    Billable Vs Bench
+                                </div>
+                                <div class="panel-stage">
+                                    <img src="images/{{organization.chart}}" class="img-responsive">
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-wrapper">
+                                <div class="panel-title">
+                                    Projects
+                                </div>
+                                <div class="panel-stage" ng-repeat="project in organization.projects">
+                                    <span>{{project}}, </span>
+                                </div>
+                                <span>...</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-notes">
+                    Owned by {{organization.owner}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

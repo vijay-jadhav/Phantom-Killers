@@ -1,0 +1,67 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel-wrapper">
+        <div class="panel-title">
+          Billable Vs Bench
+        </div>
+        <div class="panel-stage">
+          <canvas id="line" class="chart chart-line" data="weeklyStats"
+                  labels="days" legend="true" series="series"
+                  click="onClick"></canvas>
+        </div>
+        <div class="panel-notes">
+          On Weekly basis
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel-wrapper">
+        <div class="panel-title">
+          Billable Vs Bench
+        </div>
+        <div class="panel-stage">
+          <canvas id="doughnut" class="chart chart-doughnut" data="dailyStats"
+                  labels="series" legend='true'></canvas>
+        </div>
+        <div class="panel-notes">
+          As of Today
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4" data-ng-repeat="project in projects">
+      <div class="panel-wrapper">
+        <div class="panel-title">
+          {{project.name}} Project
+        </div>
+        <div class="panel-stage">
+          <canvas id="bar" class="chart chart-bar" data='[project.billable, project.bench]'
+                  labels="days" series='series' legend=true></canvas>
+        </div>
+        <div class="panel-notes">
+          {{project.note}}
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        &nbsp;
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        &nbsp;
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+</div>

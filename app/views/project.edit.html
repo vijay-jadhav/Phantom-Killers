@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel-wrapper">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="text" value={{project.name}}>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-stage">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-wrapper">
+                                <div class="panel-title">
+                                    Billable
+                                </div>
+                                <div class="panel-stage">
+                                    TBD
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-wrapper">
+                                <div class="panel-title">
+                                    People
+                                </div>
+                                <div class="panel-stage">
+                                    <ul>
+                                        <li data-ng-repeat="people in project.peoples">
+                                            <input type="text" value={{people}}>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-wrapper">
+                                <div class="panel-title" ng-class='{red: project.reddays > 0}'>
+                                    Red days
+                                </div>
+                                <div class="panel-stage">
+                                    <input type="text" value={{project.reddays}} data-ng-model="project.reddays">
+                                </div>
+                                <div class="panel-title">
+                                    Open positions
+                                </div>
+                                <div class="panel-stage">
+                                    <input type="text" value={{project.openpositions}}>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-notes">
+                    Owned by {{project.owner}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
