@@ -10,7 +10,12 @@
 angular.module('dashboardApp')
   .controller('OrganizationlistCtrl', function ($scope, $state, organizationsService) {
 
-        $scope.organizations = organizationsService.getAllOrganizations();
+        organizationsService.getAllOrganizations()
+            .success (function (data){
+                $scope.organizations = data;
+                $scope.$apply();})
+            .error (function (error){
+                console.log (error.msg);});
 
         $scope.showOrganization = function (organization) {
             console.log ('AMOl', organization.name);

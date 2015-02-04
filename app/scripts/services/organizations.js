@@ -20,17 +20,37 @@ angular.module('dashboardApp')
         this.currOrgId;
     // AngularJS will instantiate a singleton by calling "new" on this function
         this.getAllOrganizations = function () {
-            return organizations;
+
+            var successCallback, errorCallback;
+            var response = {
+                success: function (callback) {successCallback = callback; return response;},
+                error: function (callback) {errorCallback = callback; return response;}
+            };
+            setTimeout(function(){
+                successCallback(organizations);
+            }, 500);
+            return response;
         };
 
         this.getOrganization = function (orgId) {
-            var len = organizations.length;
-            for (var idx = 0; idx < len; idx++) {
-                if (organizations[idx].name === orgId) {
-                    return organizations[idx];
+            var successCallback, errorCallback;
+            var response = {
+                success: function (callback) {successCallback = callback; return response;},
+                error: function (callback) {errorCallback = callback; return response;}
+            };
+            setTimeout(function(){
+                var len = organizations.length;
+                for (var idx = 0; idx < len; idx++) {
+                    if (organizations[idx].name === orgId) {
+                        successCallback(organizations[idx]);
+                        break;
+                    }
                 }
-            }
-            return {};
+                if (idx >= len) {
+                    errorCallback({msg: 'No Organization with: ' + orgId + ' id'});
+                }
+            }, 500);
+            return response;
         };
 
         this.getCurrentOrganization = function () {

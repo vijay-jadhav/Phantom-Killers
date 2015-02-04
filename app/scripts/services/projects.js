@@ -25,17 +25,38 @@ angular.module('dashboardApp')
         this.currProjId;
         // AngularJS will instantiate a singleton by calling "new" on this function
         this.getAllProjects = function () {
-            return projects;
+            var successCallback, errorCallback;
+            var response = {
+                success: function (callback) {
+                    successCallback = callback; return response;
+                },
+                error: function (callback) {errorCallback = callback; return response;}
+            };
+            setTimeout(function(){
+                successCallback(projects);
+            }, 500);
+            return response;
         };
 
         this.getProject = function (projId) {
-            var len = projects.length;
-            for (var idx = 0; idx < len; idx++) {
-                if (projects[idx].name === projId) {
-                    return projects[idx];
+            var successCallback, errorCallback;
+            var response = {
+                success: function (callback) {successCallback = callback; return response;},
+                error: function (callback) {errorCallback = callback; return response;}
+            };
+            setTimeout(function(){
+                var len = projects.length;
+                for (var idx = 0; idx < len; idx++) {
+                    if (projects[idx].name === projId) {
+                        successCallback(projects[idx]);
+                        break;
+                    }
                 }
-            }
-            return {};
+                if (idx >= len) {
+                    errorCallback({msg: 'No Project with: ' + projId + ' id'});
+                }
+            }, 500);
+            return response;
         };
 
         this.getCurrentProject = function () {
