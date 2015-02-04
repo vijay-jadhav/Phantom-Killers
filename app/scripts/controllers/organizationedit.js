@@ -9,16 +9,14 @@
  */
 angular.module('dashboardApp')
   .controller('OrganizationeditCtrl', function ($scope, $stateParams, organizationsService) {
+    $scope.organization = organizationsService.getOrganization($stateParams.orgId);
+    console.log ($scope.organization.name);
 
-
-        organizationsService.getOrganization($stateParams.orgId)
-            .success (function (data){
-            $scope.organization = data;
-            $scope.$apply();
-            console.log ($scope.organization.name);})
-            .error (function (error){
-            console.log (error.msg);});
-
-        //$scope.organization = organizationsService.getOrganization($stateParams.orgId);
-        //console.log ($scope.organization.name);
+    $scope.addOrg = function(orgName){
+      console.log('adding organisation');
+      if($scope.newProject != undefined && $scope.newProject.trim() != '') {
+        organizationsService.addProjectToCurrentOrg($scope.newProject.trim(), orgName);
+        $scope.newProject = undefined;
+      }
+    };
   });
